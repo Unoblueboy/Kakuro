@@ -71,6 +71,7 @@ class CellGrid:
         self.cell_pointer = {}
         for i, cell in enumerate(self.cell_array):
             self.cell_pointer[tuple(cell.pos)] = i
+        self.update_grid()
 
     def get_cell_pointer(self, cell):
         return self.cell_pointer[tuple(cell.pos)]
@@ -81,6 +82,7 @@ class CellGrid:
         n = len(self.cell_array)
         self.cell_array.append(cell)
         self.cell_pointer[tuple(cell.pos)] = n
+        self.update_grid()
 
     def del_cell(self, cell):
         if self.cell_pointer.get(tuple(cell.pos)) is None:
@@ -91,6 +93,7 @@ class CellGrid:
         for key, value in self.cell_pointer.items():
             if value > i:
                 self.cell_pointer[key] = value - 1
+        self.update_grid()
 
     def get_cell(self, pos):
         i = self.cell_pointer[pos]
@@ -189,6 +192,10 @@ class CellGrid:
 
         return len(cell_list) == len(self.cell_array)
 
+    def copy(self):
+        new_cell_list = [cell.copy() for cell in self.cell_array]
+        return CellGrid(new_cell_list)
+
     def __getitem__(self, pos):
         return self.get_cell(pos)
 
@@ -199,17 +206,30 @@ class CellGrid:
         cell = self.get_cell(pos)
         self.del_cell(cell)
 
+    def __repr__(self):
+        return repr(self.cell_array)
+
 
 class Kakuro:
-    def __init__(self, cells):
-        try:
-            for cell in cells:
-                assert type(cell) == Cell
-        except AssertionError:
-            raise Exception("Not all elements of cells are of type Cell")
-        self.cells = cells
-        self.grid_height = max([cell.pos[0] for cell in self.cells])
-        self.grid_length = max([cell.pos[1] for cell in self.cells])
+    def __init__(self, cell_grid, row_values, col_values):
+        if not cell_grid.is_connected():
+            raise Exception(("The given board is not connected and"
+                             " is thus invalid"))
+        self.cell_grid = cell_grid
+        if len(row_values) != len(self.cell_grid.rows):
+            raise Exception(("Number of row constraints does not match"
+                             " the number of rows"))
+        self.row_values = row_values
+        if len(col_values) != len(self.cell_grid.cols):
+            raise Exception(("Number of column constraints does not match"
+                             " the number of columns"))
+        self.col_values = col_values
+
+    def copy(self):
+        new_cell_grid = self.cell_grid.copy()
+        new_row_values = self.row_values[:]
+        new_col_values = self.col_values[:]
+        return Kakuro(new_cell_grid, new_row_values, new_col_values)
 
 
 def main():
