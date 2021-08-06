@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>761</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Kakuro Puzzle</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>5</number>
+    </property>
+    <property name="topMargin">
+     <number>5</number>
+    </property>
+    <property name="rightMargin">
+     <number>5</number>
+    </property>
+    <property name="bottomMargin">
+     <number>5</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>761</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_New"/>
+    <addaction name="action_Open"/>
+    <addaction name="action_Save"/>
+   </widget>
+   <widget class="QMenu" name="menuSolver">
+    <property name="title">
+     <string>Solver</string>
+    </property>
+    <addaction name="actionStep_By_Step"/>
+    <addaction name="actionQuick_Solve"/>
+   </widget>
+   <widget class="QMenu" name="menuEditor">
+    <property name="title">
+     <string>&amp;Editor</string>
+    </property>
+    <addaction name="actionGrid_Mode"/>
+    <addaction name="actionConstraint_Mode"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuEditor"/>
+   <addaction name="menuSolver"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="action_New">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+  </action>
+  <action name="action_Open">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="action_Save">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionStep_By_Step">
+   <property name="text">
+    <string>Step-By-Step</string>
+   </property>
+  </action>
+  <action name="actionQuick_Solve">
+   <property name="text">
+    <string>Quick Solve</string>
+   </property>
+  </action>
+  <action name="actionEdit_Grid">
+   <property name="text">
+    <string>Edit Grid</string>
+   </property>
+  </action>
+  <action name="actionAdd_Constraints">
+   <property name="text">
+    <string>Add Constraints</string>
+   </property>
+  </action>
+  <action name="actionGrid_Mode">
+   <property name="text">
+    <string>&amp;Grid Mode</string>
+   </property>
+  </action>
+  <action name="actionConstraint_Mode">
+   <property name="text">
+    <string>&amp;Constraint Mode</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

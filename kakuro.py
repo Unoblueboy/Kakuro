@@ -71,7 +71,8 @@ class CellGrid:
         self.cell_pointer = {}
         for i, cell in enumerate(self.cell_array):
             self.cell_pointer[tuple(cell.pos)] = i
-        self.update_grid()
+        if len(self.cell_array) != 0:
+            self.update_grid()
 
     def get_cell_pointer(self, cell):
         return self.cell_pointer[tuple(cell.pos)]
